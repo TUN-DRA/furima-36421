@@ -20,17 +20,17 @@
 
 ## items テーブル
 
-| Column          | Type       | Options     |
-| --------------- | ---------- | ----------- |
-| user            | references |             |
-| product_name    |   string   | null: false |
-| description     |    text    | null: false |
-| category_id     |   integer  | null: false |
-| status_id       |   integer  | null: false |
-| postage_id      |   integer  | null: false |
-| prefecture_id   |   integer  | null: false |
-| days_to_ship_id |   integer  | null: false |
-| price           |   integer  | null: false |
+| Column          | Type       | Options           |
+| --------------- | ---------- | ----------------- |
+| user            | references | foreign_key: true |
+| product_name    |   string   | null: false       |
+| description     |    text    | null: false       |
+| category_id     |   integer  | null: false       |
+| status_id       |   integer  | null: false       |
+| postage_id      |   integer  | null: false       |
+| prefecture_id   |   integer  | null: false       |
+| days_to_ship_id |   integer  | null: false       |
+| price           |   integer  | null: false       |
 
 ### Association
 
@@ -39,10 +39,10 @@
 
 ## purchases テーブル
 
-| Column    | Type       | Options     |
-| --------- | ---------- | ----------- |
-| user      | references |             |
-| prototype | references |             |
+| Column    | Type       | Options           |
+| --------- | ---------- | ----------------- |
+| user      | references | foreign_key: true |
+| item      | references | foreign_key: true |
 
 ### Association
 
@@ -52,15 +52,15 @@
 
 ## shipping_addresses テーブル
 
-| Column          | Type       | Options     |
-| --------------- | ---------- | ----------- |
-| purchase        | references |             |
-| postal_code     |   string   | null: false |
-| prefecture_id   |   integer  | null: false |
-| city            |   string   | null: false |
-| address         |   string   | null: false |
-| building_name   |   string   |             |
-| phone_number    |   string   | null: false |
+| Column          | Type       | Options           |
+| --------------- | ---------- | ----------------- |
+| purchase        | references | foreign_key: true |
+| postal_code     |   string   | null: false       |
+| prefecture_id   |   integer  | null: false       |
+| city            |   string   | null: false       |   
+| address         |   string   | null: false       |
+| building_name   |   string   |                   |
+| phone_number    |   string   | null: false       |
 
 ### Association
 
