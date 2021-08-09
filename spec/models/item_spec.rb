@@ -29,27 +29,27 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include("Description can't be blank")
       end
       it 'カテゴリー欄で未選択のidが送られたら登録できない' do
-        @item.category_id = ''
+        @item.category_id = '1'
         @item.valid?
         expect(@item.errors.full_messages).to include("Category can't be blank")
       end
       it '商品の状態欄で未選択のidが送られたら登録できない' do
-        @item.status_id = ''
+        @item.status_id = '1'
         @item.valid?
         expect(@item.errors.full_messages).to include("Status can't be blank")
       end
       it '配送料の負担欄で未選択のidが送られたら登録できない' do
-        @item.postage_id = ''
+        @item.postage_id = '1'
         @item.valid?
         expect(@item.errors.full_messages).to include("Postage can't be blank")
       end
       it '発送元の地域欄で未選択のidが送られたら登録できない' do
-        @item.prefecture_id = ''
+        @item.prefecture_id = '1'
         @item.valid?
         expect(@item.errors.full_messages).to include("Prefecture can't be blank")
       end
       it '発送までの日数の情報欄で未選択のidが送られたら登録できない' do
-        @item.days_to_ship_id = ''
+        @item.days_to_ship_id = '1'
         @item.valid?
         expect(@item.errors.full_messages).to include("Days to ship can't be blank")
       end
