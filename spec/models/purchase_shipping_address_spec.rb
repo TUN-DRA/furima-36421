@@ -1,11 +1,11 @@
 require 'rails_helper'
 
-RSpec.describe PurchaseShippingAddress, type: :model do  
+RSpec.describe PurchaseShippingAddress, type: :model do
   before do
     user = FactoryBot.create(:user)
     item = FactoryBot.create(:item)
     @purchase_shipping_address = FactoryBot.build(:purchase_shipping_address, user_id: user.id, item_id: item.id)
-    sleep 0.3
+    sleep 0.1
   end
 
   describe '商品購入情報の保存' do
@@ -28,7 +28,7 @@ RSpec.describe PurchaseShippingAddress, type: :model do
       it '郵便番号が半角のハイフンを含んだ正しい形式でないと登録できない' do
         @purchase_shipping_address.postal_code = '1234567'
         @purchase_shipping_address.valid?
-        expect(@purchase_shipping_address.errors.full_messages).to include("Postal code is invalid. Include hyphen(-)")
+        expect(@purchase_shipping_address.errors.full_messages).to include('Postal code is invalid. Include hyphen(-)')
       end
       it '都道府県欄で未選択のidが送られたら登録できない' do
         @purchase_shipping_address.prefecture_id = 1
@@ -74,6 +74,11 @@ RSpec.describe PurchaseShippingAddress, type: :model do
         @purchase_shipping_address.user_id = nil
         @purchase_shipping_address.valid?
         expect(@purchase_shipping_address.errors.full_messages).to include("User can't be blank")
+      end
+      it 'tokenが空ではは登録できない' do
+        @purchase_shipping_address.token = nil
+        @purchase_shipping_address.valid?
+        expect(@purchase_shipping_address.errors.full_messages).to include("Token can't be blank")
       end
     end
   end
